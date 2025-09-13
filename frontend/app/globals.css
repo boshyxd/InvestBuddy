@@ -45,20 +45,20 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #006ac3;
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: #000000;
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: #ffdf01;
+  --accent-foreground: #000000;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
@@ -68,12 +68,12 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #006ac3;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffdf01;
+  --sidebar-accent-foreground: #000000;
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
@@ -118,5 +118,124 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .bg-pattern {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    background: 
+      /* Vignette effect */
+      radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.015) 70%, rgba(0, 0, 0, 0.03) 100%),
+      /* Grid pattern */
+      linear-gradient(rgba(0, 106, 195, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 106, 195, 0.03) 1px, transparent 1px),
+      /* Base gradient */
+      linear-gradient(to bottom right, #fafbfc, #ffffff);
+    background-size: 100% 100%, 50px 50px, 50px 50px, 100% 100%;
+    background-position: center, 0 0, 0 0, 0 0;
+  }
+  
+  /* Animated floating orbs */
+  .bg-pattern::before,
+  .bg-pattern::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  .bg-pattern::before {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #006ac3, #0084ff);
+    top: -200px;
+    right: -100px;
+    animation-delay: 0s;
+  }
+  
+  .bg-pattern::after {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #ffdf01, #ffa500);
+    bottom: -150px;
+    left: -100px;
+    animation-delay: 10s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.05);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+  }
+
+  /* Glass morphism cards */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg border border-white/50;
+  }
+
+  /* Premium card styles */
+  .card-elevated {
+    @apply bg-white rounded-2xl shadow-xl border border-gray-100 relative overflow-hidden;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+  }
+
+  .section-card {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300;
+  }
+
+  /* Subtle shine effect on hover */
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shine::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .card-shine:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Premium button effects */
+  .btn-premium {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 100%);
+  }
+
+  .btn-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-premium:hover::before {
+    left: 100%;
   }
 }
