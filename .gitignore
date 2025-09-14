@@ -7,3 +7,4 @@
 # Ignore VR demo local env for model generation
 vr-demo/game/zones/outside/.env
 
+.mcp.json
