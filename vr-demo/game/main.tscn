@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8wx3hdpdrw8p"]
+
+[ext_resource type="PackedScene" uid="uid://c2u2yasyfotxr" path="res://components/persistent/persistent_staging.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwl6bip7jgvu6" path="res://assets/splash/splash.png" id="2"]
+[ext_resource type="Script" uid="uid://ccf4ehy0pjk7h" path="res://game/main.gd" id="2_dmefr"]
+
+[node name="Main" instance=ExtResource("1")]
+script = ExtResource("2_dmefr")
+main_scene = "res://game/start_scene/start_scene.tscn"
+
+[node name="LoadingScreen" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.993637, -0.112631, 0, 0.112631, 0.993637, 0, -1.47187, -3.38195)
+splash_screen = ExtResource("2")

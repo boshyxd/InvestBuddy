@@ -1,2 +1,9 @@
-.mcp.json
-model-generation/test.html
+
+
+# Environment files
+.env
+.env.*
+
+# Ignore VR demo local env for model generation
+vr-demo/game/zones/outside/.env
+

@@ -1,0 +1,10 @@
+/* Demo page specific styles to prevent scrolling */
+html:has(.demo-page), 
+body:has(.demo-page) {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  position: fixed !important;
+}
