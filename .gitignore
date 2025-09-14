@@ -1,1 +1,8 @@
 .mcp.json
+
+# Environment files
+.env
+.env.*
+
+# Ignore VR demo local env for model generation
+vr-demo/game/zones/outside/.env

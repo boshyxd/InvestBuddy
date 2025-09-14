@@ -1,7 +1,12 @@
 res://default_env.tres
-res://game/main.tscn
+res://game/zones/outside/outside_zone.tscn
 res://openxr_action_map.tres
 res://addons/godot-xr-tools/staging/loading_screen/loading_screen_shader.tres
 res://addons/godot-xr-tools/misc/hold_button_visualshader.tres
 res://addons/godot-xr-tools/materials/highlight.tres
-res://addons/godot-xr-tools/staging/loading_screen.gd
+res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres
+res://addons/godot-xr-tools/hands/animations/right/hand_blend_tree.tres
+res://game/zones/outside/ai_model_spawner.gd
+res://game/main.tscn
+res://game/start_scene/start_scene.tscn
+res://game/zones/house_back_yard/house_back_yard_zone.tscn

@@ -23,10 +23,18 @@ func _ready():
 	xr_ended.connect(_on_xr_ended)
 
 
-# This method is called when a scene is loaded
+# This method is called when a scene is loaded  
 func _on_scene_loaded(_scene : XRToolsSceneBase, _user_data : Variant) -> void:
-	# Clear the continue prompt
+	# Keep the continue prompt disabled
 	prompt_for_continue = false
+	
+	# If we just loaded the start menu scene, immediately start a new game
+	if current_scene_path == main_scene:
+		# Give a tiny delay for the scene to be ready
+		await get_tree().create_timer(0.1).timeout
+		# Start a new game with normal difficulty, bypassing the menu
+		if GameState:
+			GameState.new_game(GameState.GameDifficulty.GAME_NORMAL)
 
 
 # This method is called when the player starts the VR experience
@@ -39,3 +47,5 @@ func _on_xr_started() -> void:
 func _on_xr_ended() -> void:
 	# Pause the game
 	get_tree().paused = true
+
+
