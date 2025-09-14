@@ -12,10 +12,10 @@ export default function UserProfile({ params }: { params: Promise<{ username: st
   const resolvedParams = use(params);
   const isYourProfile = resolvedParams.username === "you";
   
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<any>({
     username: isYourProfile ? "you" : resolvedParams.username,
-    displayName: isYourProfile ? "Your Account" : resolvedParams.username,
-    initials: isYourProfile ? "Y" : resolvedParams.username[0]?.toUpperCase() || "U",
+    displayName: isYourProfile ? "Angus Bailey" : resolvedParams.username,
+    initials: isYourProfile ? "AB" : resolvedParams.username[0]?.toUpperCase() || "U",
     balanceChequing: 2845.67,
     balanceSavings: 12500.00,
     totalInvestments: 8234.50,
@@ -34,6 +34,30 @@ export default function UserProfile({ params }: { params: Promise<{ username: st
     ]
   });
 
+  useEffect(() => {
+    if (!isYourProfile) return;
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch("/api/debug/profiles", { cache: "no-store" });
+        const json = await res.json();
+        if (json.ok && json.data && json.data.length) {
+          const me = json.data[0];
+          setUserData((prev: any) => ({
+            ...prev,
+            username: me.username ?? "you",
+            displayName: me.full_name ?? "Angus Bailey",
+            balanceChequing: me.balance_chequing ?? prev.balanceChequing,
+            balanceSavings: me.balance_savings ?? prev.balanceSavings,
+            friendCode: me.friend_code ?? prev.friendCode,
+          }));
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchProfile();
+  }, [isYourProfile]);
+
   if (isYourProfile) {
     // Your own profile view
     return (
@@ -48,7 +72,7 @@ export default function UserProfile({ params }: { params: Promise<{ username: st
                 </AvatarFallback>
               </Avatar>
               <div>
-                <h1 className="text-xl font-bold">Your Portfolio</h1>
+                <h1 className="text-xl font-bold">Angus Bailey's Portfolio</h1>
                 <p className="text-sm text-muted-foreground">Friend Code: {userData.friendCode}</p>
               </div>
             </div>
@@ -106,7 +130,7 @@ export default function UserProfile({ params }: { params: Promise<{ username: st
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUpIcon className="h-5 w-5" />
-              Your Investments
+              Angus Bailey's Investments
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">

@@ -7,8 +7,8 @@ import { Separator } from "@/components/ui/separator";
 export default function Home() {
   // Placeholder data; replace with real data from Supabase later
   const user = {
-    name: "Your Name",
-    initials: "YN",
+    name: "Angus Bailey",
+    initials: "AB",
     avatarUrl: "",
     maskedCard: "XXXX1523",
     chequing: "$3,200.00",
