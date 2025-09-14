@@ -65,7 +65,7 @@ export default async function GoalsOverview() {
   return (
     <main className="mx-auto w-full max-w-md p-4 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Your Goals</h1>
+        <h1 className="text-2xl font-extrabold gradient-text">Your Goals</h1>
         <Button asChild size="sm" className="rounded-full shadow-md hover:shadow-lg transition-all">
           <Link href="/goals/new">
             <PlusIcon className="h-4 w-4 mr-1" />
@@ -81,7 +81,7 @@ export default async function GoalsOverview() {
           enrichedGoals.map((g) => {
             const pct = Math.min(100, Math.round((g.contributed / Math.max(1, g.target)) * 100));
             return (
-              <div key={g.id} className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all">
+              <div key={g.id} className="glass-card p-5 card-3d hover:shadow-2xl hover:border-white/60 transition-all">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
@@ -93,7 +93,7 @@ export default async function GoalsOverview() {
                     </Button>
                   </div>
                   <div className="space-y-2">
-                    <Progress value={pct} className="h-2" />
+                    <Progress value={pct} className="h-2 shimmer" />
                     <div className="flex justify-between text-sm" aria-live="polite">
                       <span className="font-medium">{cad(g.contributed)}</span>
                       <span className="text-muted-foreground">of {cad(g.target)}</span>

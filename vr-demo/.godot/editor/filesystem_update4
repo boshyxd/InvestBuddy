@@ -11,3 +11,4 @@ res://game/zones/house_back_yard/house_back_yard_zone.tscn
 res://game/zones/outside/outside_zone.tscn
 res://game/zones/outside/ai_model_spawner.gd
 res://game/network/goal_event_listener.gd
+res://game/items/toolbox/toolbox_type.tres

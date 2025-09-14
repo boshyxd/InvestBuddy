@@ -135,7 +135,7 @@ export default function FriendsPage() {
   return (
     <main className="mx-auto w-full max-w-md p-4 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Friends</h1>
+        <h1 className="text-2xl font-extrabold gradient-text">Friends</h1>
         <Button asChild size="sm" variant="outline" className="rounded-full shadow-md hover:shadow-lg transition-all">
           <Link href="/goals/new">Start a goal</Link>
         </Button>
@@ -143,8 +143,8 @@ export default function FriendsPage() {
 
       {/* Requests */}
       <section aria-labelledby="requests-heading" className="space-y-3">
-        <h2 id="requests-heading" className="text-lg font-semibold">Requests</h2>
-        <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+        <h2 id="requests-heading" className="text-lg font-semibold gradient-text">Requests</h2>
+        <div className="glass-card p-5 card-3d">
           {loading ? (
             <p className="text-sm text-muted-foreground text-center py-4">Loading...</p>
           ) : requests.length === 0 ? (
@@ -152,7 +152,7 @@ export default function FriendsPage() {
           ) : (
             <ul className="space-y-3">
               {requests.map((r) => (
-                <li key={r.friendshipId} className="flex items-center justify-between p-3 hover:bg-gray-50/50 rounded-xl transition-colors">
+                <li key={r.friendshipId} className="flex items-center justify-between p-3 hover:bg-white/50 rounded-xl transition-colors">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 text-center leading-10 text-sm font-semibold text-primary shadow-sm">
                       {r.initials}
@@ -173,7 +173,7 @@ export default function FriendsPage() {
       {/* Friends list */}
       <section aria-labelledby="friends-heading" className="space-y-3">
         <h2 id="friends-heading" className="text-lg font-semibold">Angus Bailey's friends</h2>
-        <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+        <div className="glass-card p-5 card-3d">
           {loading ? (
             <p className="text-sm text-muted-foreground text-center py-4">Loading...</p>
           ) : friends.length === 0 ? (
@@ -181,7 +181,7 @@ export default function FriendsPage() {
           ) : (
             <ul className="space-y-3">
               {friends.map((f) => (
-                <li key={f.id} className="flex items-center justify-between p-3 hover:bg-gray-50/50 rounded-xl transition-colors">
+                <li key={f.id} className="flex items-center justify-between p-3 hover:bg-white/50 rounded-xl transition-colors">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-gradient-to-br from-accent/30 to-accent/20 text-center leading-10 text-sm font-semibold shadow-sm">
                       {f.initials}
@@ -205,8 +205,8 @@ export default function FriendsPage() {
 
       {/* Invite widget */}
       <section aria-labelledby="invite-heading" className="space-y-3">
-        <h2 id="invite-heading" className="text-lg font-semibold">Invite friends</h2>
-        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-4">
+        <h2 id="invite-heading" className="text-lg font-semibold gradient-text">Invite friends</h2>
+        <div className="glass-card p-6 space-y-4">
           <div className="grid gap-3">
             <Label htmlFor="friend-code" className="text-sm font-medium">Friend code</Label>
             <div className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export default function FriendsPage() {
                 aria-describedby="friend-code-help"
                 className="rounded-xl shadow-sm"
               />
-              <Button disabled={!codeInput || !me} onClick={addFriendByCode} className="rounded-xl shadow-md hover:shadow-lg transition-all">Add friend</Button>
+              <Button disabled={!codeInput || !me} onClick={addFriendByCode} className="rounded-xl shadow-md hover:shadow-lg transition-all btn-premium">Add friend</Button>
             </div>
             <p id="friend-code-help" className="text-xs text-muted-foreground">Paste a code you received from a friend.</p>
           </div>

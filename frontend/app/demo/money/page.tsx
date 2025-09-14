@@ -219,7 +219,7 @@ export default function MoneyDemoPage() {
       facts: [
         "Balance ≈ $7,160",
         "Contrib $6,000 • Growth ≈ $1,160",
-        "For illustration; replace with your own model"
+        "For illustration only"
       ],
     },
     {
@@ -299,7 +299,6 @@ export default function MoneyDemoPage() {
             <div className="text-white/80 text-sm leading-relaxed">
               <div className="font-semibold text-white mb-1">InvestBuddy Beta Offer</div>
               <div>Get your first $100 matched when you invest $100 in a shared goal with a friend.</div>
-              <div className="text-[11px] text-white/60 mt-1">Limited beta. Terms apply. Demo copy — replace with your actual promo.</div>
             </div>
             <a href="/goals/new?withFriend=1&promo=FIRST100" className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm transition pointer-events-auto">
               Start a shared goal →
@@ -316,7 +315,6 @@ export default function MoneyDemoPage() {
                 <li key={i}>• {f}</li>
               ))}
             </ul>
-            <div className="text-[11px] text-white/50 mt-2">Example only — replace with your own stats & citations.</div>
           </div>
         </div>
         
